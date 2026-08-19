@@ -1,8 +1,10 @@
 <!-- ============================================================
-     LANDING PAGE Breathwork - POPUP SYSTEME.IO BRANCHEE
-     A coller tel quel dans un bloc "Code HTML" de Systeme.io.
-     Rien a modifier : les 3 boutons portent deja la classe
-     systeme-show-popup-25148532 et le script est charge en bas.
+     LANDING PAGE Breathwork - a coller dans un bloc "Code HTML"
+
+     PREREQUIS : un bouton Systeme.io d'identifiant button-8bce75f3
+     doit exister sur cette page, regle pour ouvrir ta popup.
+     Rends-le invisible, ne le supprime pas : ce sont mes boutons
+     qui cliquent dessus a la place du visiteur.
      ============================================================ -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -73,10 +75,13 @@ body.no-scroll{overflow:hidden}
   letter-spacing:-.03em;}
 #noe-lp .hero h1 .hl{background:linear-gradient(180deg,rgba(44,123,242,0) 62%, var(--blue-100) 62%);
   padding:0 2px;}
-#noe-lp .hero-sub{font-size:clamp(16px,1.7vw,18px);color:var(--ink-2);
-  max-width:680px;margin:0 auto;}
-#noe-lp .hero-sub p + p{margin-top:16px}
-#noe-lp .hero-sub strong{color:var(--ink);font-weight:700}
+#noe-lp .hero-points{list-style:none;padding:0;
+  max-width:620px;margin:0 auto;text-align:left;
+  display:grid;gap:16px;}
+#noe-lp .hero-points li{display:flex;gap:13px;align-items:flex-start;
+  font-size:clamp(15.5px,1.6vw,16.5px);color:var(--ink-2);}
+#noe-lp .hero-points svg{flex:0 0 auto;margin-top:3px;color:var(--blue-600)}
+#noe-lp .hero-points strong{color:var(--ink);font-weight:700}
 #noe-lp .player-note{margin:44px auto 16px;max-width:720px;
   font-size:15px;color:var(--ink-2);font-weight:500;
   display:flex;gap:10px;align-items:flex-start;justify-content:center;text-align:left;}
@@ -115,6 +120,8 @@ body.no-scroll{overflow:hidden}
   font-size:17px;color:var(--ink-2);}
 #noe-lp .card-quote strong{color:var(--ink)}
 #noe-lp .card-quote p + p{margin-top:16px}
+#noe-lp #bonus{padding-bottom:40px}
+#noe-lp #concret{padding-top:44px}
 #noe-lp .bonus{display:grid;grid-template-columns:320px 1fr;gap:38px;align-items:center;
   background:#fff;border:1px solid var(--blue-100);border-radius:22px;
   padding:34px;box-shadow:var(--shadow-md);position:relative;overflow:hidden;}
@@ -250,11 +257,11 @@ body.no-scroll{overflow:hidden}
 
     <h1>Une séance de respiration guidée pour explorer ton inconscient, te reconnecter à toi et <span class="hl">te libérer de ce qui t'empêche d'avancer</span></h1>
 
-    <div class="hero-sub">
-      <p>D'habitude j'organise ces séances uniquement pour les entrepreneurs que j'accompagne, et là j'ouvre exceptionnellement l'invitation à ceux qui me suivent.</p>
-      <p>Ça se passe en ligne, <strong>dimanche 30 août à 10h</strong>, c'est <strong>100% gratuit</strong> et je te guide à la voix du début à la fin.</p>
-      <p>Tu n'as absolument rien à savoir faire. Tu as juste besoin d'un endroit calme et de 1h30 devant toi.</p>
-    </div>
+    <ul class="hero-points">
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg><span>D'habitude j'organise ces séances uniquement pour les entrepreneurs que j'accompagne, et là j'ouvre exceptionnellement l'invitation à ceux qui me suivent.</span></li>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Ça se passe en ligne, <strong>dimanche 30 août à 10h</strong>, c'est <strong>100% gratuit</strong> et je te guide à la voix du début à la fin.</span></li>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg><span>Tu n'as absolument rien à savoir faire. Tu as juste besoin d'un endroit calme et de 1h30 devant toi.</span></li>
+    </ul>
 
     <p class="player-note">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -275,7 +282,7 @@ body.no-scroll{overflow:hidden}
     </div>
 
     <div class="cta-block">
-      <a class="btn systeme-show-popup-25148532" href="#">JE RÉSERVE MA PLACE GRATUITEMENT</a>
+      <a class="btn" href="#" data-open-popup>JE RÉSERVE MA PLACE GRATUITEMENT</a>
       <p class="micro">Aucune expérience nécessaire, je te guide du début à la fin.</p>
     </div>
   </div>
@@ -301,7 +308,7 @@ body.no-scroll{overflow:hidden}
 </section>
 
 <!-- ============ BLOC 2 · C'EST QUOI ============ -->
-<section>
+<section id="concret">
   <div class="wrap narrow">
     <span class="eyebrow">C'est quoi, concrètement</span>
     <h2 style="margin-top:20px">Un travail de respiration qui change ton état de conscience</h2>
@@ -446,7 +453,7 @@ body.no-scroll{overflow:hidden}
     <h2>On se voit dimanche ?</h2>
     <p>C'est dimanche 30 août à 10h, en ligne, et c'est entièrement gratuit. Tu remplis tes infos, tu reçois le lien Google Meet par email et je t'ajoute au groupe WhatsApp avec les autres participants. Je t'écris ensuite en privé pour comprendre ce qui t'amène et te guider au mieux le jour J.</p>
     <p class="bonus-note">🎁 Et tu repars avec la formation « Premier Breathwork », <s>149 €</s> offerte.</p>
-    <a class="btn systeme-show-popup-25148532" href="#">JE RÉSERVE MA PLACE GRATUITEMENT</a>
+    <a class="btn" href="#" data-open-popup>JE RÉSERVE MA PLACE GRATUITEMENT</a>
     <p class="micro">
       💻 En ligne sur Google Meet · 📅 Dimanche 30 août à 10h · ⏱ 1h30 · 100% gratuit<br>
       Une question ? <a href="https://wa.me/33623567816" target="_blank" rel="noopener">Message sur WhatsApp au +33 6 23 56 78 16</a>
@@ -458,14 +465,40 @@ body.no-scroll{overflow:hidden}
 
 <!-- ============ STICKY CTA MOBILE ============ -->
 <div class="sticky" id="sticky">
-  <a class="btn btn-full systeme-show-popup-25148532" href="#">JE RÉSERVE MA PLACE GRATUITEMENT</a>
+  <a class="btn btn-full" href="#" data-open-popup>JE RÉSERVE MA PLACE GRATUITEMENT</a>
 </div>
 
 <script>
 (function(){
+  /* ============================================================
+     ID du bouton Systeme.io invisible qui ouvre la popup.
+     Si tu recrees ce bouton un jour, remplace la valeur ci-dessous
+     par son nouvel identifiant : c'est la seule ligne a changer.
+     ============================================================ */
+  var TRIGGER_ID = 'button-8bce75f3';
+
+  function ouvrirPopup(e){
+    if (e) e.preventDefault();
+    var hote = document.getElementById(TRIGGER_ID);
+    if (!hote){
+      console.warn('[LP] Bouton Systeme.io "' + TRIGGER_ID + '" introuvable : la popup ne peut pas s\'ouvrir.');
+      return;
+    }
+    /* le bouton Systeme.io est parfois un conteneur : on vise le lien interieur */
+    var cible = (hote.matches && hote.matches('a, button'))
+              ? hote
+              : (hote.querySelector('a, button') || hote);
+    cible.click();
+  }
+
+  document.querySelectorAll('#noe-lp [data-open-popup]').forEach(function(b){
+    b.addEventListener('click', ouvrirPopup);
+  });
+
+  /* barre collante mobile : apparait une fois le hero passe */
   var sticky = document.getElementById('sticky');
   var hero   = document.querySelector('#noe-lp .hero');
-  if (sticky && hero && 'IntersectionObserver' in window) {
+  if (sticky && hero && 'IntersectionObserver' in window){
     new IntersectionObserver(function(e){
       sticky.classList.toggle('show', !e[0].isIntersecting);
     }, {threshold:0}).observe(hero);
@@ -473,6 +506,3 @@ body.no-scroll{overflow:hidden}
 })();
 </script>
 </div>
-
-<!-- Script de la popup Systeme.io - ne pas retirer -->
-<script id="form-script-tag-25148532" src="https://www.multipreneur.fr/public/remote/page/43705144e4494935635992f22f9fd81e5cb6f8ee.js"></script>
