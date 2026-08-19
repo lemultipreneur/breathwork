@@ -1,0 +1,81 @@
+<!-- ============================================================
+     DA "Noé" pour la POPUP Systeme.io
+     A coller dans un bloc "Code HTML" DE LA PAGE POPUP
+     (pas sur la landing page : uniquement sur l'etape Formulaire popup).
+
+     Ce code ne cree aucun champ : il repeint ceux de Systeme.io
+     pour qu'ils ressemblent au reste de la page.
+     Les champs restent 100% natifs, donc les contacts sont bien captes.
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ---------- Police sur toute la popup ---------- */
+body, h1, h2, h3, h4, p, span, div, li, label,
+input, select, textarea, button, a{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif !important;
+}
+
+/* ---------- Titres ---------- */
+h1, h2, h3{
+  color:#0E1726 !important;
+  font-weight:800 !important;
+  letter-spacing:-.02em !important;
+  line-height:1.15 !important;
+}
+
+/* ---------- Libelles des champs ---------- */
+label{
+  font-size:13.5px !important;
+  font-weight:600 !important;
+  color:#0E1726 !important;
+  margin-bottom:7px !important;
+}
+
+/* ---------- Champs de saisie ---------- */
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="number"], input[type="password"], select, textarea{
+  width:100% !important;
+  font-size:16px !important;
+  color:#0E1726 !important;
+  padding:14px 16px !important;
+  border:1px solid #E4EAF3 !important;
+  border-radius:12px !important;
+  background:#FBFCFE !important;
+  box-shadow:none !important;
+  transition:border-color .15s ease, box-shadow .15s ease, background .15s ease !important;
+}
+input::placeholder, textarea::placeholder{ color:#A7B3C4 !important; }
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus,
+input[type="number"]:focus, select:focus, textarea:focus{
+  outline:none !important;
+  border-color:#2C7BF2 !important;
+  background:#ffffff !important;
+  box-shadow:0 0 0 4px rgba(44,123,242,.14) !important;
+}
+
+/* ---------- Bouton de validation ---------- */
+button[type="submit"], input[type="submit"], .elButton, a.elButton{
+  width:100% !important;
+  font-size:16px !important;
+  font-weight:700 !important;
+  letter-spacing:.02em !important;
+  text-transform:uppercase !important;
+  color:#ffffff !important;
+  background:linear-gradient(180deg,#2C7BF2 0%,#1B62E0 100%) !important;
+  border:0 !important;
+  border-radius:14px !important;
+  padding:20px 30px !important;
+  box-shadow:0 10px 30px rgba(27,98,224,.32) !important;
+  cursor:pointer !important;
+  transition:transform .15s ease, box-shadow .15s ease !important;
+}
+button[type="submit"]:hover, input[type="submit"]:hover, .elButton:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 14px 38px rgba(27,98,224,.40) !important;
+}
+
+/* ---------- Fond de la popup ---------- */
+body{ background:#ffffff !important; color:#0E1726 !important; }
+</style>
