@@ -1,0 +1,211 @@
+<!-- ============================================================
+     PAGE DE CONFIRMATION Breathwork - a coller dans un bloc "Code HTML" de Systeme.io
+     CSS + markup + scripts : tout est inclus.
+     Le CSS est cantonne a #noe-lp : il ne deborde pas sur ta page,
+     et le theme Systeme.io ne peut pas deteindre sur lui.
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+#noe-lp, #noe-lp *{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  box-sizing:border-box;
+  -webkit-font-smoothing:antialiased;
+}
+#noe-lp *{
+  margin:0;padding:0;border:0;outline:0;
+  background:transparent;list-style:none;float:none;
+  text-transform:none;letter-spacing:normal;
+  color:inherit;text-align:inherit;font-style:normal;line-height:inherit;
+  text-shadow:none;box-shadow:none;border-radius:0;
+}
+#noe-lp a{text-decoration:none}
+#noe-lp{line-height:1.6;text-align:left}
+
+#noe-lp, :root{--blue-900:#0B2E60;
+  --blue-700:#1450B4;
+  --blue-600:#1B62E0;
+  --blue-500:#2C7BF2;
+  --blue-100:#DCE9FF;
+  --blue-50:#F1F6FF;
+  --ink:#0E1726;
+  --ink-2:#3C4A5E;
+  --ink-3:#6B798C;
+  --line:#E4EAF3;
+  --wa:#25D366;
+  --radius:18px;
+  --shadow-sm:0 1px 2px rgba(11,46,96,.05), 0 8px 24px rgba(11,46,96,.06);
+  --shadow-md:0 2px 6px rgba(11,46,96,.06), 0 18px 48px rgba(11,46,96,.10);}
+#noe-lp, #noe-lp *{box-sizing:border-box}
+#noe-lp{margin:0;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);line-height:1.6;background:#fff;
+  -webkit-font-smoothing:antialiased;}
+#noe-lp h1,#noe-lp h2,#noe-lp h3{margin:0;line-height:1.15;letter-spacing:-.02em;font-weight:800}
+#noe-lp p{margin:0}
+#noe-lp .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+#noe-lp section{padding:72px 0}
+#noe-lp .sec-blue{background:linear-gradient(180deg,#FAFCFF 0%,var(--blue-50) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#noe-lp .eyebrow{display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--blue-700);background:var(--blue-50);
+  border:1px solid var(--blue-100);border-radius:999px;padding:8px 16px;}
+#noe-lp .top{padding:56px 0 64px;text-align:center;
+  background:radial-gradient(900px 480px at 50% -10%, #E8F1FF 0%, rgba(232,241,255,0) 70%), #fff;
+  border-bottom:1px solid var(--line);}
+#noe-lp .tick{width:64px;height:64px;border-radius:19px;margin:0 auto 24px;
+  background:linear-gradient(180deg,var(--blue-500),var(--blue-600));
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  box-shadow:0 14px 34px rgba(27,98,224,.34);}
+#noe-lp h1{font-size:clamp(28px,4.4vw,44px);margin-bottom:16px}
+#noe-lp .sub{font-size:clamp(16px,1.7vw,18px);color:var(--ink-2);max-width:640px;margin:0 auto}
+#noe-lp .video-shell{margin-top:38px;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-md);border:1px solid var(--line);background:#0B1220;}
+#noe-lp .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+#noe-lp .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;
+  border:1px solid var(--line);border-radius:999px;padding:10px 18px;
+  font-size:15px;font-weight:600;box-shadow:var(--shadow-sm);}
+#noe-lp h2{font-size:clamp(26px,3.6vw,36px);margin:20px 0 28px}
+#noe-lp .steps{display:grid;gap:16px}
+#noe-lp .step{display:flex;gap:20px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 28px;box-shadow:var(--shadow-sm);}
+#noe-lp .step .n{flex:0 0 auto;width:42px;height:42px;border-radius:12px;
+  background:linear-gradient(180deg,var(--blue-500),var(--blue-600));color:#fff;
+  font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 16px rgba(27,98,224,.28);}
+#noe-lp .step h3{font-size:19px;margin-bottom:8px}
+#noe-lp .step p{font-size:15.5px;color:var(--ink-2)}
+#noe-lp .step.mandatory{border-color:var(--blue-100);background:linear-gradient(180deg,#fff,#FAFCFF)}
+#noe-lp .tag{display:inline-block;margin-left:10px;vertical-align:2px;
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--blue-700);background:var(--blue-50);border:1px solid var(--blue-100);
+  border-radius:999px;padding:3px 10px;}
+#noe-lp .call-intro{font-size:clamp(16px,1.7vw,18px);color:var(--ink-2);margin-bottom:28px}
+#noe-lp .widget-shell{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px;box-shadow:var(--shadow-md);overflow:hidden;}
+#noe-lp .wa-block{text-align:center;padding:64px 0 22px}
+#noe-lp .btn-wa{display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+  font-size:clamp(15px,1.5vw,17px);font-weight:700;letter-spacing:.02em;color:#fff;
+  background:linear-gradient(180deg,#2FE075 0%,#1FBF57 100%);
+  padding:20px 38px;border-radius:14px;
+  box-shadow:0 10px 30px rgba(31,191,87,.34);
+  transition:transform .15s ease, box-shadow .15s ease;}
+#noe-lp .btn-wa:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(31,191,87,.42)}
+#noe-lp .btn-wa:active{transform:translateY(0)}
+#noe-lp .endline{margin-top:26px;font-size:clamp(17px,1.9vw,20px);font-weight:700;
+  color:var(--blue-900);letter-spacing:-.01em;}
+#noe-lp .micro{margin-top:12px;font-size:14px;color:var(--ink-3)}
+#noe-lp .micro a{color:var(--blue-700);font-weight:600}
+#noe-lp footer{padding:34px 0;text-align:center;color:var(--ink-3);font-size:13.5px;border-top:1px solid var(--line)}
+
+@media (max-width:760px){
+#noe-lp section{padding:54px 0}
+#noe-lp .top{padding:44px 0 52px}
+#noe-lp .step{padding:22px 20px;gap:16px}
+#noe-lp .widget-shell{padding:8px}
+
+}
+
+@media (prefers-reduced-motion:reduce){
+#noe-lp, #noe-lp *{transition:none!important}
+}
+</style>
+
+<div id="noe-lp">
+<!-- ============ TITRE + VIDÉO ============ -->
+<header class="top">
+  <div class="wrap">
+    <div class="tick">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>
+    </div>
+
+    <h1>Ta place est bien réservée, juste avant regarde cette vidéo.</h1>
+    <p class="sub">Prends 2 minutes pour la regarder, je t'explique les 3 trucs à faire avant dimanche pour que tout se passe bien.</p>
+
+    <!-- VIDÉO DE CONFIRMATION — embed Vidalytics -->
+    <div class="video-shell">
+      <div id="vidalytics_embed_Ccu4EIuBWgAv4KpI" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
+      <script type="text/javascript">
+      (function (v, i, d, a, l, y, t, c, s) {
+          y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+          if (!vsl){vsl=function(u,cb){
+              if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+              if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+              i.getElementsByTagName("head")[0].appendChild(s);
+          };}
+          vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+      })(window, document, 'Vidalytics', 'vidalytics_embed_Ccu4EIuBWgAv4KpI', 'https://fast.vidalytics.com/embeds/q0rNHlg7/Ccu4EIuBWgAv4KpI/');
+      </script>
+    </div>
+
+    <div class="chips">
+      <span class="chip">💻 En ligne, sur Google Meet</span>
+      <span class="chip">📅 Dimanche 30 août à 10h</span>
+      <span class="chip">⏱ 1h30</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BLOC RÉSERVATION CALL ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Réserver un call</span>
+    <h2>Faisons le point après ta séance</h2>
+    <p class="call-intro">Tu peux réserver un call post breathwork pour faire le point sur ta séance et surtout qu'on parle ensemble de ton business !</p>
+
+    <!-- iClosed inline widget begin -->
+    <div class="widget-shell">
+      <div class="iclosed-widget" data-url="https://app.iclosed.io/e/multipreneur/appel-business-post-breathwork" title="Appel Business Post Breathwork" style="width: 100%; height: 620px"></div>
+      <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async></script>
+    </div>
+    <!-- iClosed inline widget end -->
+  </div>
+</section>
+
+<!-- ============ LES 3 ÉTAPES ============ -->
+<section class="sec-blue">
+  <div class="wrap">
+    <span class="eyebrow">À faire maintenant</span>
+    <h2>Les 3 étapes à faire</h2>
+
+    <div class="steps">
+      <article class="step mandatory">
+        <span class="n">1</span>
+        <div>
+          <h3>Signer la décharge<span class="tag">Obligatoire</span></h3>
+          <p>C'est obligatoire. Je viens de te l'envoyer par email, elle est dans ta boîte mail. Tu la signes et tu me la renvoies, sans ça je ne pourrai pas te faire participer à la séance. Si tu ne la trouves pas, pense à regarder dans tes spams.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <span class="n">2</span>
+        <div>
+          <h3>Venir à jeun</h3>
+          <p>Ne mange rien dans les 3 à 4 heures avant la séance. Tu peux boire de l'eau bien sûr, mais si tu arrives le ventre plein tu vas être remué pendant les respirations et ça va dégrader la qualité de ta séance.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <span class="n">3</span>
+        <div>
+          <h3>Rejoindre le groupe WhatsApp</h3>
+          <p>C'est là que je mets le lien Google Meet, les infos de dernière minute et que tu peux me poser tes questions avant dimanche. C'est aussi là que tu vas rencontrer les autres participants.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="wa-block">
+      <!-- ⚠️ À REMPLACER : colle ici le lien d'invitation du groupe WhatsApp (https://chat.whatsapp.com/...) -->
+      <a class="btn-wa" href="#LIEN_GROUPE_WHATSAPP" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.5-.3Z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+        JE REJOINS LE GROUPE WHATSAPP
+      </a>
+      <p class="endline">On se voit dimanche 30 août à 10h. J'ai hâte.</p>
+      <p class="micro">Une question d'ici là ? Écris-moi au <a href="https://wa.me/33623567816" target="_blank" rel="noopener">+33 6 23 56 78 16</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>© Noé — Le Multipreneur</footer>
+</div>
