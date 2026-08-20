@@ -104,7 +104,7 @@ body.no-scroll{overflow:hidden}
   border-radius:var(--radius);overflow:hidden;cursor:pointer;
   box-shadow:var(--shadow-md);border:1px solid var(--line);background:#0B1220;
   display:block;}
-#noe-lp .cover img{width:100%;height:100%;object-fit:cover;display:block}
+#noe-lp .cover-img{width:100%;height:100%;object-fit:cover;display:block}
 #noe-lp .cover iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 #noe-lp .cover-veil{position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(6,14,28,.68) 0%,rgba(6,14,28,.12) 42%,rgba(6,14,28,.30) 100%);}
@@ -120,7 +120,7 @@ body.no-scroll{overflow:hidden}
   transition:transform .18s ease;}
 #noe-lp .cover:hover .cover-play{transform:translate(-50%,-50%) scale(1.08)}
 #noe-lp .cover:focus-visible{outline:3px solid var(--blue-500);outline-offset:3px}
-#noe-lp .cover.joue .cover-veil,#noe-lp .cover.joue .cover-text,#noe-lp .cover.joue .cover-play,#noe-lp .cover.joue picture{display:none}
+#noe-lp .cover.joue .cover-veil,#noe-lp .cover.joue .cover-text,#noe-lp .cover.joue .cover-play,#noe-lp .cover.joue .cover-img{display:none}
 #noe-lp .player-caption{margin:16px auto 0;max-width:720px;
   font-size:14px;color:var(--ink-3);font-style:italic;}
 #noe-lp .infobar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
@@ -322,18 +322,18 @@ body.no-scroll{overflow:hidden}
       <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg><span>Tu n'as absolument rien à savoir faire. Tu as juste besoin d'un endroit calme et de 1h30 devant toi.</span></li>
     </ul>
 
-    <div class="cover" id="cover" role="button" tabindex="0"
-         aria-label="Lire la vidéo de présentation">
-      <picture>
-        <source srcset="https://lemultipreneur.github.io/breathwork/couverture.webp" type="image/webp">
-        <img src="https://lemultipreneur.github.io/breathwork/couverture.jpg" alt="Noé présente la séance de breathwork" width="1280" height="718">
-      </picture>
+    <a class="cover" id="cover" href="https://www.youtube.com/watch?v=e-wW9bnxcxU"
+       target="_blank" rel="noopener" aria-label="Lire la vidéo de présentation">
+      <!-- Couverture animee, hebergee sur Systeme.io.
+           Pour la changer un jour : remplace cette seule adresse. -->
+      <img class="cover-img" src="https://d1yei2z3i6k35z.cloudfront.net/5693590/6a86934bdf9106.02019078_Regardelavid%C3%A9oavantder%C3%A9serverjetexpliquequijesuiscequecestcequisepassedanstoncorpset%C3%A0quoitattendrelejourJ.1.GIF"
+           alt="Noé présente la séance de breathwork" width="795" height="446">
       <span class="cover-veil"></span>
       <span class="cover-text">Regarde la vidéo avant de réserver</span>
       <span class="cover-play">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
       </span>
-    </div>
+    </a>
 
     <p class="player-caption">Cette vidéo date un peu et je l'avais tournée pour une session en présentiel. Celle de dimanche se passe en ligne sur Google Meet et elle est entièrement gratuite, tout le reste ne change pas.</p>
 
@@ -620,19 +620,22 @@ body.no-scroll{overflow:hidden}
   // Couverture cliquable : YouTube n'est charge qu'au clic
   var cover = document.getElementById('cover');
   if (cover) {
-    var lancer = function(){
-      if (cover.classList.contains('joue')) return;
+    cover.addEventListener('click', function(e){
+      if (cover.classList.contains('joue')) { e.preventDefault(); return; }
+      var f;
+      try {
+        f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/e-wW9bnxcxU?rel=0&autoplay=1';
+        f.title = 'Presentation de la seance de breathwork';
+        f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        f.setAttribute('allowfullscreen', '');
+        cover.appendChild(f);
+      } catch (err) {
+        return;   /* le lien fait son travail : YouTube s'ouvre dans un onglet */
+      }
+      if (!f || !f.parentNode) return;
       cover.classList.add('joue');
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/e-wW9bnxcxU?rel=0&autoplay=1';
-      f.title = 'Presentation de la seance de breathwork';
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      f.allowFullscreen = true;
-      cover.appendChild(f);
-    };
-    cover.addEventListener('click', lancer);
-    cover.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lancer(); }
+      e.preventDefault();   /* la lecture sur place a marche, on annule l'ouverture d'onglet */
     });
   }
 
