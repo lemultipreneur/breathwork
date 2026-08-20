@@ -5,7 +5,8 @@ import io, re
 BASE  = 'https://lemultipreneur.github.io/breathwork/'
 SCOPE = '#noe-lp'
 FONT  = "'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
-ASSETS = ['noe.jpg', 'formation.jpg'] + ['temoignages/poster-%d.jpg' % i for i in (1,2,3)] \
+ASSETS = ['noe.jpg', 'formation.jpg', 'couverture.webp', 'couverture.jpg'] \
+       + ['temoignages/poster-%d.jpg' % i for i in (1,2,3)] \
                      + ['temoignages/temoignage-%d.mp4' % i for i in (1,2,3)]
 
 def scope_selector(sel):

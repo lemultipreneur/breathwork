@@ -91,19 +91,36 @@ h2{font-size:clamp(28px,4vw,42px);margin-bottom:20px}
 }
 .hero-points svg{flex:0 0 auto;margin-top:3px;color:var(--blue-600)}
 .hero-points strong{color:var(--ink);font-weight:700}
-.player-note{
-  margin:44px auto 16px;max-width:720px;
-  font-size:15px;color:var(--ink-2);font-weight:500;
-  display:flex;gap:10px;align-items:flex-start;justify-content:center;text-align:left;
+.cover{
+  position:relative;width:100%;aspect-ratio:16/9;margin-top:44px;
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  box-shadow:var(--shadow-md);border:1px solid var(--line);background:#0B1220;
+  display:block;
 }
-.player-note svg{flex:0 0 auto;margin-top:3px;color:var(--blue-600)}
-.player{
-  position:relative;width:100%;aspect-ratio:16/9;
-  border-radius:var(--radius);overflow:hidden;
-  box-shadow:var(--shadow-md);
-  border:1px solid var(--line);background:#0B1220;
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.cover-veil{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,14,28,.68) 0%,rgba(6,14,28,.12) 42%,rgba(6,14,28,.30) 100%);
 }
-.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.cover-text{
+  position:absolute;top:0;left:0;right:0;padding:22px 26px;
+  color:#fff;font-size:clamp(17px,2.4vw,26px);font-weight:800;
+  letter-spacing:-.02em;line-height:1.2;text-align:left;
+  text-shadow:0 2px 14px rgba(0,0,0,.45);pointer-events:none;
+}
+.cover-play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:clamp(56px,9vw,82px);height:clamp(56px,9vw,82px);border-radius:50%;
+  background:linear-gradient(180deg,var(--blue-500),var(--blue-600));color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 34px rgba(0,0,0,.4);pointer-events:none;
+  transition:transform .18s ease;
+}
+.cover:hover .cover-play{transform:translate(-50%,-50%) scale(1.08)}
+.cover:focus-visible{outline:3px solid var(--blue-500);outline-offset:3px}
+.cover.joue .cover-veil,.cover.joue .cover-text,
+.cover.joue .cover-play,.cover.joue picture{display:none}
 .player-caption{
   margin:16px auto 0;max-width:720px;
   font-size:14px;color:var(--ink-3);font-style:italic;
@@ -373,7 +390,6 @@ footer{padding:34px 0;text-align:center;color:var(--ink-3);font-size:13.5px}
   body{padding-bottom:92px}
   .modal{padding:32px 24px}
   .row-2{grid-template-columns:1fr;gap:0}
-  .player-note{text-align:left}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
@@ -395,13 +411,17 @@ footer{padding:34px 0;text-align:center;color:var(--ink-3);font-size:13.5px}
       <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg><span>Tu n'as absolument rien à savoir faire. Tu as juste besoin d'un endroit calme et de 1h30 devant toi.</span></li>
     </ul>
 
-    <p class="player-note">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      <span>Regarde la vidéo avant de réserver, je t'explique qui je suis, ce que c'est, ce qui se passe dans ton corps et à quoi t'attendre le jour J.</span>
-    </p>
-
-    <div class="player">
-      <iframe src="https://www.youtube-nocookie.com/embed/e-wW9bnxcxU?rel=0" title="Présentation de la séance de breathwork" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+    <div class="cover" id="cover" role="button" tabindex="0"
+         aria-label="Lire la vidéo de présentation">
+      <picture>
+        <source srcset="couverture.webp" type="image/webp">
+        <img src="couverture.jpg" alt="Noé présente la séance de breathwork" width="1280" height="718">
+      </picture>
+      <span class="cover-veil"></span>
+      <span class="cover-text">Regarde la vidéo avant de réserver</span>
+      <span class="cover-play">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </span>
     </div>
 
     <p class="player-caption">Cette vidéo date un peu et je l'avais tournée pour une session en présentiel. Celle de dimanche se passe en ligne sur Google Meet et elle est entièrement gratuite, tout le reste ne change pas.</p>
@@ -674,6 +694,25 @@ footer{padding:34px 0;text-align:center;color:var(--ink-3);font-size:13.5px}
     new IntersectionObserver(function(entries){
       sticky.classList.toggle('show', !entries[0].isIntersecting);
     }, {threshold:0}).observe(hero);
+  }
+
+  // Couverture cliquable : YouTube n'est charge qu'au clic
+  var cover = document.getElementById('cover');
+  if (cover) {
+    var lancer = function(){
+      if (cover.classList.contains('joue')) return;
+      cover.classList.add('joue');
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/e-wW9bnxcxU?rel=0&autoplay=1';
+      f.title = 'Presentation de la seance de breathwork';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      cover.appendChild(f);
+    };
+    cover.addEventListener('click', lancer);
+    cover.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lancer(); }
+    });
   }
 
   // Soumission du formulaire
